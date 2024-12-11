@@ -1,0 +1,90 @@
+{
+    "images": [
+        {
+            "file_name": "image1.dcm",
+            "id": "img1",
+            "index": 0,
+            "category_ids": null,
+            "regressions": null
+        },
+        {
+            "file_name": "image2.dcm",
+            "id": "img2",
+            "index": 1,
+            "category_ids": null,
+            "regressions": null
+        }
+    ],
+    "categories": [
+        {
+            "id": "c1",
+            "name": "tumor1",
+            "supercategory_id": "sc1"
+        },
+        {
+            "id": "c2",
+            "name": "tumor2",
+            "supercategory_id": "sc1",
+            "display": false
+        },
+        {
+            "id": "sc1",
+            "name": "lesion",
+            "supercategory_id": null
+        }
+    ],
+    "regressions": [],
+    "meta": {
+        "category_ids": null,
+        "regressions": null
+    },
+    "annotations": [
+        {
+            "id": "olar3fK0H2r351606S8eq",
+            "image_id": "img1",
+            "iscrowd": 0,
+            "object_id": "6GNvPb8fbyudQ_g1eskZI",
+            "bbox": null,
+            "segmentation": [
+                [
+                    0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    1,
+                    1,
+                    0
+                ]
+            ]
+        },
+        {
+            "id": "UMmrTIzRqNQ6GsIisJ0hH",
+            "image_id": "img2",
+            "iscrowd": 0,
+            "object_id": "6GNvPb8fbyudQ_g1eskZI",
+            "bbox": null,
+            "segmentation": [
+                [
+                    1,
+                    2,
+                    2,
+                    2,
+                    3,
+                    2,
+                    2,
+                    2
+                ]
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "id": "6GNvPb8fbyudQ_g1eskZI",
+            "category_ids": [
+                "c1"
+            ],
+            "regressions": null
+        }
+    ]
+}

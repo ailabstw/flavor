@@ -1,0 +1,152 @@
+{
+    "images": [
+        {
+            "file_name": "image1.dcm",
+            "id": "img1",
+            "index": 0,
+            "category_ids": null,
+            "regressions": null
+        },
+        {
+            "file_name": "image2.dcm",
+            "id": "img2",
+            "index": 1,
+            "category_ids": null,
+            "regressions": null
+        }
+    ],
+    "categories": [
+        {
+            "id": "c1",
+            "name": "tumor1",
+            "supercategory_id": "sc1"
+        },
+        {
+            "id": "c2",
+            "name": "tumor2",
+            "supercategory_id": "sc1"
+        },
+        {
+            "id": "sc1",
+            "name": "lesion",
+            "supercategory_id": null
+        }
+    ],
+    "regressions": [],
+    "meta": {
+        "category_ids": null,
+        "regressions": null
+    },
+    "annotations": [
+        {
+            "id": "4G3637ttIfqyg3icYagYh",
+            "image_id": "img1",
+            "iscrowd": 0,
+            "object_id": "sSuum2z8Vy2Y-hKIS2Jrt",
+            "bbox": null,
+            "segmentation": [
+                [
+                    0,
+                    0,
+                    0,
+                    1,
+                    1,
+                    1,
+                    1,
+                    0
+                ]
+            ]
+        },
+        {
+            "id": "h55S5iOPDvBdkYBWgMTXn",
+            "image_id": "img2",
+            "iscrowd": 0,
+            "object_id": "arPolt2JzsgwLZoPs-Kg6",
+            "bbox": null,
+            "segmentation": [
+                [
+                    1,
+                    2,
+                    2,
+                    2,
+                    3,
+                    2,
+                    2,
+                    2
+                ]
+            ]
+        },
+        {
+            "id": "ROfk3MifIFxw-BuBHkWkH",
+            "image_id": "img1",
+            "iscrowd": 0,
+            "object_id": "1_2-MXlG59ejhuGnmgpI0",
+            "bbox": null,
+            "segmentation": [
+                [
+                    0,
+                    1,
+                    0,
+                    2,
+                    1,
+                    2,
+                    1,
+                    1
+                ]
+            ]
+        },
+        {
+            "id": "FrZGD9XbB-CGCDrHEk_k3",
+            "image_id": "img2",
+            "iscrowd": 0,
+            "object_id": "XrED-Plja7u_8U6lpaXW1",
+            "bbox": null,
+            "segmentation": [
+                [
+                    0,
+                    1,
+                    0,
+                    2,
+                    1,
+                    2,
+                    2,
+                    2,
+                    2,
+                    1,
+                    1,
+                    1
+                ]
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "id": "sSuum2z8Vy2Y-hKIS2Jrt",
+            "category_ids": [
+                "c1"
+            ],
+            "regressions": null
+        },
+        {
+            "id": "arPolt2JzsgwLZoPs-Kg6",
+            "category_ids": [
+                "c1"
+            ],
+            "regressions": null
+        },
+        {
+            "id": "1_2-MXlG59ejhuGnmgpI0",
+            "category_ids": [
+                "c2"
+            ],
+            "regressions": null
+        },
+        {
+            "id": "XrED-Plja7u_8U6lpaXW1",
+            "category_ids": [
+                "c2"
+            ],
+            "regressions": null
+        }
+    ]
+}

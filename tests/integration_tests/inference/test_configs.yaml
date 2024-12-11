@@ -1,0 +1,18 @@
+test_inference:
+  test_image_inference:
+    seg_example:
+      files_path: examples/inference/test_data/seg/0.dcm
+      data_path: examples/inference/test_data/seg/input.json
+    cls_example:
+      files_path: examples/inference/test_data/cls_reg/n02123159_tiger_cat.jpeg
+      data_path: examples/inference/test_data/cls_reg/input.json
+    reg_example:
+      files_path: examples/inference/test_data/cls_reg/n02123159_tiger_cat.jpeg
+      data_path: examples/inference/test_data/cls_reg/input.json
+    det_example:
+      files_path: examples/inference/test_data/det/BloodImage_00000_jpg.rf.5fb00ac1228969a39cee7cd6678ee704.jpg
+      data_path: examples/inference/test_data/det/input.json
+  test_tabular_inference:
+    tabular_cls_example:
+      files_path: examples/inference/test_data/tabular/cls/test_cls.csv
+      data_path: examples/inference/test_data/tabular/cls/input.json

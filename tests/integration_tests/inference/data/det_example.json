@@ -1,0 +1,293 @@
+{
+    "images": [
+        {
+            "file_name": "BloodImage_00000_jpg.rf.5fb00ac1228969a39cee7cd6678ee704.jpg",
+            "id": "0",
+            "index": 0,
+            "category_ids": null,
+            "regressions": null
+        }
+    ],
+    "annotations": [
+        {
+            "id": "P0mY_O0cGzPqVrIIEc-VP",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "CijMbSwI2mWFyyjcEF88C",
+            "bbox": [
+                [
+                    168,
+                    165,
+                    324,
+                    318
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "XJlA6HsPOgFhwWQw2EgO1",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "kxL6-g_HZmlFAXUhBQ5Mv",
+            "bbox": [
+                [
+                    66,
+                    102,
+                    148,
+                    159
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "8mKuot4HAjA8z3Ot16ffN",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "syacdYWvrI61o6nsV5Xsg",
+            "bbox": [
+                [
+                    309,
+                    136,
+                    395,
+                    206
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "e4bfFxazkeWwXlehcl0Sm",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "h3u2-VUHjxYsnkILogG_g",
+            "bbox": [
+                [
+                    285,
+                    52,
+                    375,
+                    110
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "PlgAbQhZ99FkFezS8tAa-",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "TzE9NuUrEa-i3OKlwqG2o",
+            "bbox": [
+                [
+                    112,
+                    322,
+                    208,
+                    386
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "nHbxassOVjwdbG1rlg7_j",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "r-L_OK3ixibVYMZvnZuRh",
+            "bbox": [
+                [
+                    351,
+                    302,
+                    416,
+                    366
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "ShmS05LcdM8qH4bLj890u",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "qTiOeN7NtjQ6dhYXvZY9S",
+            "bbox": [
+                [
+                    9,
+                    247,
+                    105,
+                    318
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "OG6979Rz-AUI76CeIjJSy",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "8TvXxDYTJ6ezI3X-HEmzP",
+            "bbox": [
+                [
+                    32,
+                    347,
+                    126,
+                    415
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "Wzn_Tt2RD49-I4dhIYQ_V",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "pJltfHF7Cgd77i8RElm6m",
+            "bbox": [
+                [
+                    199,
+                    40,
+                    301,
+                    106
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "aS1nUKPB1p94LKByd8lbn",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "GNDGWgkRLjYNIDhnku_3Y",
+            "bbox": [
+                [
+                    290,
+                    6,
+                    373,
+                    60
+                ]
+            ],
+            "segmentation": null
+        },
+        {
+            "id": "yxYj8aDP-4X2Rco9X1urH",
+            "image_id": "0",
+            "iscrowd": 0,
+            "object_id": "3WJOhDs9sAZyGI2vVEBit",
+            "bbox": [
+                [
+                    300,
+                    363,
+                    397,
+                    416
+                ]
+            ],
+            "segmentation": null
+        }
+    ],
+    "categories": [
+        {
+            "id": "XCmP40zJHq0pPeL5-oW_V",
+            "name": "RBC",
+            "supercategory_id": null,
+            "display": true
+        },
+        {
+            "id": "i3JccbWXn76yFusTLSYdh",
+            "name": "WBC",
+            "supercategory_id": null,
+            "display": true
+        },
+        {
+            "id": "kkkwZy0Jb6qakLv7ZQvmv",
+            "name": "Platelets",
+            "supercategory_id": null,
+            "display": true
+        }
+    ],
+    "regressions": [],
+    "objects": [
+        {
+            "id": "CijMbSwI2mWFyyjcEF88C",
+            "category_ids": [
+                "kkkwZy0Jb6qakLv7ZQvmv"
+            ],
+            "regressions": null,
+            "confidence": 0.888302206993103
+        },
+        {
+            "id": "kxL6-g_HZmlFAXUhBQ5Mv",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.8173213005065918
+        },
+        {
+            "id": "syacdYWvrI61o6nsV5Xsg",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.8119137287139893
+        },
+        {
+            "id": "h3u2-VUHjxYsnkILogG_g",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.8112708330154419
+        },
+        {
+            "id": "TzE9NuUrEa-i3OKlwqG2o",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.8106584548950195
+        },
+        {
+            "id": "r-L_OK3ixibVYMZvnZuRh",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.8015460968017578
+        },
+        {
+            "id": "qTiOeN7NtjQ6dhYXvZY9S",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.7877307534217834
+        },
+        {
+            "id": "8TvXxDYTJ6ezI3X-HEmzP",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.7805907726287842
+        },
+        {
+            "id": "pJltfHF7Cgd77i8RElm6m",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.7647914290428162
+        },
+        {
+            "id": "GNDGWgkRLjYNIDhnku_3Y",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.7384290099143982
+        },
+        {
+            "id": "3WJOhDs9sAZyGI2vVEBit",
+            "category_ids": [
+                "i3JccbWXn76yFusTLSYdh"
+            ],
+            "regressions": null,
+            "confidence": 0.7303114533424377
+        }
+    ],
+    "meta": {
+        "category_ids": null,
+        "regressions": null
+    }
+}

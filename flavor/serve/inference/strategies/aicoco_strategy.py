@@ -648,19 +648,24 @@ class AiCOCORegressionOutputStrategy(BaseAiCOCOOutputStrategy):
         Returns:
             AiCOCOImageOut: Result in AiCOCO compatible format.
         """
-        self.validate_model_output(model_out)
+        self.validate_model_output(model_out, regressions)
         aicoco_ref = self.prepare_aicoco(images=images, regressions=regressions)
         aicoco_out = self.model_to_aicoco(aicoco_ref, model_out)
         return aicoco_out
 
-    def validate_model_output(self, model_out: np.ndarray):
+    def validate_model_output(self, model_out: np.ndarray, regressions: Sequence[Dict[str, Any]]):
         """
         Validate inference model output.
         """
         if not isinstance(model_out, np.ndarray):
             raise TypeError(f"`model_out` must be type: np.ndarray but got {type(model_out)}.")
 
-        if model_out.ndim != 1 and model_out.ndim != 4:
+        if len(model_out) != len(regressions):
+            raise ValueError(
+                f"The number of regression values in `model_out` should be {len(regressions)} but got {len(model_out)}."
+            )
+
+        if model_out.ndim != 1:
             raise ValueError(
                 f"The dimension of `model_out` should be in 1D but got {model_out.ndim}."
             )
@@ -850,28 +855,40 @@ class AiCOCOTabularClassificationOutputStrategy(BaseAiCOCOTabularOutputStrategy)
         Returns:
             AiCOCOOut: Result in AiCOCO compatible format.
         """
-        self.validate_model_output(model_out, categories)
+        self.validate_model_output(model_out, categories, dataframes, meta)
         aicoco_ref = self.prepare_aicoco(
             tables=tables, meta=meta, dataframes=dataframes, categories=categories
         )
         aicoco_out = self.model_to_aicoco(aicoco_ref, model_out)
         return aicoco_out
 
-    def validate_model_output(self, model_out: np.ndarray, categories: Sequence[Dict[str, Any]]):
+    def validate_model_output(
+        self,
+        model_out: np.ndarray,
+        categories: Sequence[Dict[str, Any]],
+        dataframes: Sequence[pd.DataFrame],
+        meta: Dict[str, Any],
+    ):
         """
         Validate inference model output.
         """
         if not isinstance(model_out, np.ndarray):
             raise TypeError(f"`model_out` must be type: np.ndarray but got {type(model_out)}.")
 
-        if model_out.ndim > 2:
+        if model_out.ndim != 2:
             raise ValueError(
-                f"The dimension of the `model_out` must be less than 2 but got {model_out.ndim}."
+                f"The dimension of the `model_out` must be 2 but got {model_out.ndim}."
+            )
+
+        n = sum([len(df) // meta["window_size"] for df in dataframes])
+        if n != model_out.shape[0]:
+            raise ValueError(
+                f"The number of records in `model_out` should be {n} but got {model_out.shape[0]}."
             )
 
         if model_out.shape[-1] != len(categories):
             raise ValueError(
-                f"The number of classes in `model_out` should be {len(categories)} but got {len(model_out)}."
+                f"The number of classes in `model_out` should be {len(categories)} but got {model_out.shape[-1]}."
             )
 
         if not np.all(np.isin(model_out, [0, 1])):
@@ -931,23 +948,40 @@ class AiCOCOTabularRegressionOutputStrategy(BaseAiCOCOTabularOutputStrategy):
         Returns:
             AiCOCOOut: Result in AiCOCO compatible format.
         """
-        self.validate_model_output(model_out)
+        self.validate_model_output(model_out, regressions, dataframes, meta)
         aicoco_ref = self.prepare_aicoco(
             tables=tables, meta=meta, dataframes=dataframes, regressions=regressions
         )
         aicoco_out = self.model_to_aicoco(aicoco_ref, model_out)
         return aicoco_out
 
-    def validate_model_output(self, model_out: np.ndarray):
+    def validate_model_output(
+        self,
+        model_out: np.ndarray,
+        regressions: Sequence[Dict[str, Any]],
+        dataframes: Sequence[pd.DataFrame],
+        meta: Dict[str, Any],
+    ):
         """
         Validate inference model output.
         """
         if not isinstance(model_out, np.ndarray):
             raise TypeError(f"`model_out` must be type: np.ndarray but got {type(model_out)}.")
 
-        if model_out.ndim > 2:
+        if model_out.ndim != 2:
             raise ValueError(
-                f"The dimension of the `model_out` must be less than 2 but got {model_out.ndim}."
+                f"The dimension of the `model_out` must be 2 but got {model_out.ndim}."
+            )
+
+        n = sum([len(df) // meta["window_size"] for df in dataframes])
+        if n != model_out.shape[0]:
+            raise ValueError(
+                f"The number of records in `model_out` should be {n} but got {model_out.shape[0]}."
+            )
+
+        if model_out.shape[-1] != len(regressions):
+            raise ValueError(
+                f"The number of regression values in `model_out` should be {len(regressions)} but got {model_out.shape[-1]}."
             )
 
         if np.isinf(model_out).any():
