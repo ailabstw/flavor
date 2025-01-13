@@ -1,3 +1,4 @@
+import copy
 import random
 import string
 from abc import abstractmethod
@@ -108,17 +109,27 @@ class BaseAiCOCOOutputStrategy(BaseStrategy):
         res: List[AiCategory] = []
         supercategory_id_table: Dict[str, str] = {}
 
-        for category in categories:
-            supercat_name = category.pop("supercategory_name", None)
-            if supercat_name:
-                if supercat_name not in supercategory_id_table:
-                    supercategory_id_table[supercat_name] = generate()
-            category["id"] = generate()
-            category["supercategory_id"] = supercategory_id_table.get(supercat_name)
-            res.append(AiCategory.model_validate(category))
+        for cat_dict in categories:
+            cat_copy = cat_dict.copy()
+
+            supercat_name = cat_copy.get("supercategory_name")
+
+            if supercat_name and supercat_name not in supercategory_id_table:
+                supercategory_id_table[supercat_name] = generate()
+
+            cat_copy["id"] = generate()
+            cat_copy["supercategory_id"] = supercategory_id_table.get(supercat_name)
+
+            cat_copy.pop("supercategory_name", None)
+
+            res.append(AiCategory.model_validate(cat_copy))
 
         for sup_class_name, n_id in supercategory_id_table.items():
-            supercategory = {"id": n_id, "name": sup_class_name, "supercategory_id": None}
+            supercategory = {
+                "id": n_id,
+                "name": sup_class_name,
+                "supercategory_id": None
+            }
             res.append(AiCategory.model_validate(supercategory))
 
         return res
@@ -136,17 +147,26 @@ class BaseAiCOCOOutputStrategy(BaseStrategy):
         res: List[AiRegression] = []
         superregression_id_table: Dict[str, str] = {}
 
-        for regression in regressions:
-            super_name = regression.pop("superregression_name", None)
-            if super_name:
-                if super_name not in superregression_id_table:
-                    superregression_id_table[super_name] = generate()
-            regression["id"] = generate()
-            regression["superregression_id"] = superregression_id_table.get(super_name)
-            res.append(AiRegression.model_validate(regression))
+        for reg_dict in regressions:
+            reg_copy = reg_dict.copy()
+
+            super_name = reg_copy.get("superregression_name")
+            if super_name and super_name not in superregression_id_table:
+                superregression_id_table[super_name] = generate()
+
+            reg_copy["id"] = generate()
+            reg_copy["superregression_id"] = superregression_id_table.get(super_name)
+
+            reg_copy.pop("superregression_name", None)
+
+            res.append(AiRegression.model_validate(reg_copy))
 
         for sup_regression_name, n_id in superregression_id_table.items():
-            superregression = {"id": n_id, "name": sup_regression_name, "superregression_id": None}
+            superregression = {
+                "id": n_id,
+                "name": sup_regression_name,
+                "superregression_id": None,
+            }
             res.append(AiRegression.model_validate(superregression))
 
         return res
