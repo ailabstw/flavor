@@ -19,7 +19,10 @@ PathSet = {"localModels", "localInfos", "globalModel", "globalInfo"}
 def SetEvent(event: str):
     if event not in EventSet:
         raise ValueError("Unknown event {}".format(event))
-    open(os.path.join(os.environ["OUTPUT_PATH"], event), "w").close()
+    output_path = os.environ.get("OUTPUT_PATH")
+    if not output_path:
+        raise EnvironmentError("OUTPUT_PATH environment variable is not set.")
+    open(os.path.join(output_path, event), "w").close()
 
 
 def WaitEvent(event: str, is_error: mp.Value = None):
@@ -29,11 +32,17 @@ def WaitEvent(event: str, is_error: mp.Value = None):
 
     if event not in EventSet:
         raise ValueError("Unknown event {}".format(event))
-    while not os.path.exists(os.path.join(os.environ["OUTPUT_PATH"], event)):
+
+    output_path = os.environ.get("OUTPUT_PATH")
+    if not output_path:
+        raise EnvironmentError("OUTPUT_PATH environment variable is not set.")
+
+    while not os.path.exists(os.path.join(output_path, event)):
         time.sleep(1)
         if is_error.value != 0:
             return
-    os.remove(os.path.join(os.environ["OUTPUT_PATH"], event))
+
+    os.remove(os.path.join(output_path, event))
 
 
 def CleanEvent(event: str):
@@ -54,9 +63,10 @@ def IsSetEvent(event: str) -> bool:
 
 
 def SaveInfoJson(info: dict):
-    with open(
-        os.path.join(os.path.dirname(os.environ["LOCAL_MODEL_PATH"]), "info.json"), "w"
-    ) as openfile:
+    local_model_path = os.environ.get("LOCAL_MODEL_PATH")
+    if not local_model_path:
+        raise EnvironmentError("LOCAL_MODEL_PATH environment variable is not set.")
+    with open(os.path.join(os.path.dirname(local_model_path), "info.json"), "w") as openfile:
         json.dump(info, openfile)
 
 
@@ -79,7 +89,10 @@ def SetPaths(filename: str, items: Union[str, list]):
 def GetPaths(filename: str) -> list:
     if filename not in PathSet:
         raise ValueError("Unknown filename {}".format(filename))
-    with open(os.path.join(os.environ["OUTPUT_PATH"], filename), "r") as F:
+    output_path = os.environ.get("OUTPUT_PATH")
+    if not output_path:
+        raise EnvironmentError("OUTPUT_PATH environment variable is not set.")
+    with open(os.path.join(output_path, filename), "r") as F:
         content = F.read().splitlines()
     return content
 
